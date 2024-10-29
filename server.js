@@ -10,7 +10,7 @@ const personRouter = require("./router/personRouter");
 
 app.use('/person',personRouter);
 app.use('/menu',router);
-
+// test git status
 app.listen(3000,()=>{
     console.log('Server running on port 3000');
  
