@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-// const mongodbURL = 'mongodb://localhost:27017/hotels';
+const mongodbLocal = process.env.MONGODB_URL_LOCAL;
+const mongodbLiveURL = process.env.MONGODB_URL;
+// const mongodbURL =mongodbLocal;
 // set up mongoddb connnection
 // ************* remote host ----------------
 // mongodb+srv://<db_username>:<db_password>@cluster0.ayyhp.mongodb.net/
-const mongodbURL = 'mongodb+srv://suryansh:Surya@cluster0.ayyhp.mongodb.net/';
+const mongodbURL = mongodbLiveURL;
 
 mongoose.connect(mongodbURL,{
     useNewUrlParser: true,
