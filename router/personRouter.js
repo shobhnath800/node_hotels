@@ -3,7 +3,12 @@ const router = express.Router();
 const Person = require('../models/person');
 
 router.get('/', function(req, res) {
-    res.status(200).json({success: true,message: 'Success'});
+    try{
+
+        res.status(200).json({success: true,message: 'Success'});
+    }catch(error){
+        res.status(500).json({ success: false, message: "Persons not fetched" });
+    }
 });
 router.get("/:worktype", async( req, res) =>{
     try{
@@ -19,7 +24,7 @@ res.status(404).json({success:false, message:"Invalid worktype", error:e});
     }
 
 })
-router.post("/person", async(req, res) => {
+router.post("/create-new-person", async(req, res) => {
     try{
     const data = req.body;
     const newPersions = new Person(data);
@@ -60,5 +65,5 @@ router.delete("/:id", async(req, res) => {
 res.status(404).json({ success: false, message:"Error while deleting", error: error.message });
     }
 })
-console.log("a===-iugi  g", )
+
 module.exports = router;
